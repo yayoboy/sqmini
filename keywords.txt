@@ -1,0 +1,56 @@
+#######################################
+# Syntax Coloring Map For SQLite Micro
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+
+sqlite3	KEYWORD1
+sqlite3_stmt	KEYWORD1
+sqlite_vfs_config_t	KEYWORD1
+sqlite_storage_type_t	KEYWORD1
+sqlite_micro_stats_t	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+sqlite_micro_init	KEYWORD2
+sqlite_micro_register_vfs	KEYWORD2
+sqlite_micro_open	KEYWORD2
+sqlite_micro_storage_init	KEYWORD2
+sqlite_micro_shutdown	KEYWORD2
+sqlite_micro_init_spiffs	KEYWORD2
+sqlite_micro_init_littlefs_esp32	KEYWORD2
+sqlite_micro_init_littlefs_rp2040	KEYWORD2
+sqlite_micro_init_sdcard	KEYWORD2
+sqlite_micro_get_stats	KEYWORD2
+
+sqlite3_open	KEYWORD2
+sqlite3_close	KEYWORD2
+sqlite3_exec	KEYWORD2
+sqlite3_prepare_v2	KEYWORD2
+sqlite3_step	KEYWORD2
+sqlite3_finalize	KEYWORD2
+sqlite3_bind_int	KEYWORD2
+sqlite3_bind_double	KEYWORD2
+sqlite3_bind_text	KEYWORD2
+sqlite3_column_int	KEYWORD2
+sqlite3_column_double	KEYWORD2
+sqlite3_column_text	KEYWORD2
+sqlite3_errmsg	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+
+SQLITE_STORAGE_SPIFFS	LITERAL1
+SQLITE_STORAGE_LITTLEFS	LITERAL1
+SQLITE_STORAGE_SDCARD	LITERAL1
+SQLITE_STORAGE_FLASH	LITERAL1
+
+SQLITE_OK	LITERAL1
+SQLITE_ERROR	LITERAL1
+SQLITE_ROW	LITERAL1
+SQLITE_DONE	LITERAL1

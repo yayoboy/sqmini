@@ -1,0 +1,89 @@
+#ifndef SQLITE_MICRO_CONFIG_H
+#define SQLITE_MICRO_CONFIG_H
+
+/*
+ * SQLite Configuration for Microcontrollers
+ * Optimized for ESP32 and RP2040
+ */
+
+/* Detect platform */
+#if defined(ESP32) || defined(ESP8266)
+    #define SQLITE_PLATFORM_ESP32
+#elif defined(PICO_BOARD) || defined(ARDUINO_ARCH_RP2040)
+    #define SQLITE_PLATFORM_RP2040
+#endif
+
+/* Disable features not needed on microcontrollers */
+#define SQLITE_OMIT_LOAD_EXTENSION
+#define SQLITE_OMIT_VIRTUALTABLE
+#define SQLITE_OMIT_DEPRECATED
+#define SQLITE_OMIT_SHARED_CACHE
+#define SQLITE_OMIT_AUTOINIT
+#define SQLITE_OMIT_UTF16
+#define SQLITE_OMIT_PROGRESS_CALLBACK
+#define SQLITE_OMIT_COMPILEOPTION_DIAGS
+#define SQLITE_OMIT_TCL_VARIABLE
+#define SQLITE_OMIT_DECLTYPE
+#define SQLITE_OMIT_AUTHORIZATION
+
+/* Memory optimizations */
+#define SQLITE_DEFAULT_MEMSTATUS 0
+#define SQLITE_DEFAULT_WAL_SYNCHRONOUS 1
+#define SQLITE_LIKE_DOESNT_MATCH_BLOBS
+#define SQLITE_MAX_EXPR_DEPTH 0
+#define SQLITE_OMIT_LOOKASIDE
+
+/* Page size optimizations for flash memory */
+#define SQLITE_DEFAULT_PAGE_SIZE 512
+#define SQLITE_DEFAULT_CACHE_SIZE -64  /* 64KB cache */
+#define SQLITE_MAX_PAGE_SIZE 4096
+#define SQLITE_DEFAULT_TEMP_CACHE_SIZE 16
+
+/* Reduce memory usage */
+#define SQLITE_SMALL_STACK
+#define SQLITE_DEFAULT_MEMSTATUS 0
+#define SQLITE_MAX_WORKER_THREADS 0
+
+/* Enable threadsafe mode 1 (serialized) */
+#define SQLITE_THREADSAFE 1
+
+/* Disable features that increase code size */
+#define SQLITE_OMIT_ALTERTABLE
+#define SQLITE_OMIT_ANALYZE
+#define SQLITE_OMIT_ATTACH
+#define SQLITE_OMIT_AUTOINCREMENT
+#define SQLITE_OMIT_AUTOVACUUM
+#define SQLITE_OMIT_BLOB_LITERAL
+#define SQLITE_OMIT_CAST
+#define SQLITE_OMIT_CHECK
+#define SQLITE_OMIT_COMPLETE
+#define SQLITE_OMIT_COMPOUND_SELECT
+#define SQLITE_OMIT_EXPLAIN
+#define SQLITE_OMIT_FOREIGN_KEY
+#define SQLITE_OMIT_PRAGMA
+#define SQLITE_OMIT_REINDEX
+#define SQLITE_OMIT_SCHEMA_PRAGMAS
+#define SQLITE_OMIT_SCHEMA_VERSION_PRAGMAS
+#define SQLITE_OMIT_SUBQUERY
+#define SQLITE_OMIT_TEMPDB
+#define SQLITE_OMIT_TRACE
+#define SQLITE_OMIT_TRIGGER
+#define SQLITE_OMIT_VACUUM
+#define SQLITE_OMIT_VIEW
+#define SQLITE_OMIT_WINDOWFUNC
+
+/* Platform specific settings */
+#ifdef SQLITE_PLATFORM_ESP32
+    #define SQLITE_DEFAULT_MEMSTATUS 0
+    #define SQLITE_MAX_MEMORY 65536  /* 64KB */
+#endif
+
+#ifdef SQLITE_PLATFORM_RP2040
+    #define SQLITE_DEFAULT_MEMSTATUS 0
+    #define SQLITE_MAX_MEMORY 32768  /* 32KB */
+#endif
+
+/* Enable custom VFS */
+#define SQLITE_ENABLE_CUSTOM_VFS 1
+
+#endif /* SQLITE_MICRO_CONFIG_H */
